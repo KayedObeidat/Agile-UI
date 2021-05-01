@@ -1,24 +1,36 @@
-import logo from './logo.svg';
-import './App.css';
+import React, {Fragment, useEffect} from 'react'
+import 'materialize-css/dist/css/materialize.min.css';
+import M from 'materialize-css/dist/js/materialize.min.js';
+import NavBar from './components/layout/NavBar'
+import AddUserModal from './components/users/AddUserModal'
+import UserListModal from './components/users/UserListModal'
+import EditUserModal from './components/users/EditUserModal'
+import AddTaskModal from './components/tasks/AddTaskModal'
+import EditTaskModal from './components/tasks/EditTaskModal'
+import Tasks from './components/tasks/Tasks'
+import AddBtn from './components/layout/AddBtn'
+import { Provider } from 'react-redux'
+import store from './store'
+import UserSelectOptions from './components/users/UserSelectOptions';
 
-function App() {
+const App = () => {
+  useEffect(() => {
+    M.AutoInit();
+  })
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <Provider store={store}>
+    <Fragment>
+      <NavBar />
+      <div className="container">
+        <AddBtn />
+        <AddTaskModal />
+        <EditTaskModal />
+        <AddUserModal />
+        <UserListModal />
+        <Tasks />
+      </div>
+    </Fragment>
+    </Provider>
   );
 }
 
