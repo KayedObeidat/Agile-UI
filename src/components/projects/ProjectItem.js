@@ -2,15 +2,15 @@ import React from 'react'
 import PropTypes from 'prop-types'
 import M from 'materialize-css/dist/js/materialize.min.js'
 
-const UserItem = ({ user: { name } }) => {
+const ProjectItem = ({ project: { title } }) => {
     const onGrade = () => {
-    M.toast({ html: `${name} was clicked!` })
+    M.toast({ html: `${title} was clicked!` })
     }
 
     return (
         <li className="collection-item">
             <div>
-                {name} 
+                {title} 
                 <a href="#!" className="secondary-content" onClick={onGrade} >
                     <i className="material-icons grey-tect">grade</i>
                 </a>
@@ -19,8 +19,8 @@ const UserItem = ({ user: { name } }) => {
     )
 }
 
-UserItem.propTypes = {
-    user: PropTypes.object.isRequired,
+ProjectItem.propTypes = {
+    project: PropTypes.object.isRequired,
 }
 
-export default UserItem
+export default ProjectItem

@@ -1,11 +1,12 @@
-import React from 'react'
+import React, { Fragment } from 'react'
 
 const AddBtn = () => {
     return (
-        <div className="fixed-action-btn">
-            <a href="#add-task-modal" className="btn-floating btn-large blue darken-2 modal-trigger"> 
+        <Fragment>
+            <div className="fixed-action-btn ">
+            <a href="#add-task-modal" className="btn-floating btn-large blue-grey darken-1 modal-trigger"> 
                 <i className="large material-icons">add</i>
-            </a>
+            </a>  
             <ul>
                 <li>
                     <a href="#user-list-modal" className="btn-floating green modal-trigger">
@@ -17,8 +18,9 @@ const AddBtn = () => {
                         <i className="material-icons">person_add</i>
                     </a>
                 </li>
-            </ul>
+            </ul>        
         </div>
+        </Fragment>
     )
 }
 

@@ -9,10 +9,12 @@ import AddTaskModal from './components/tasks/AddTaskModal'
 import EditTaskModal from './components/tasks/EditTaskModal'
 import Tasks from './components/tasks/Tasks'
 import AddBtn from './components/layout/AddBtn'
+import AddProjectModal from './components/projects/AddProjectModal'
 import { Provider } from 'react-redux'
 import store from './store'
+import AddProjectButton from './components/layout/AddProjectButton'
 import UserSelectOptions from './components/users/UserSelectOptions';
-
+import ProjectListModal from './components/projects/ProjectListModal'
 const App = () => {
   useEffect(() => {
     M.AutoInit();
@@ -21,9 +23,12 @@ const App = () => {
     <Provider store={store}>
     <Fragment>
       <NavBar />
+      
       <div className="container">
         <AddBtn />
         <AddTaskModal />
+        <AddProjectModal />
+        <ProjectListModal />
         <EditTaskModal />
         <AddUserModal />
         <UserListModal />

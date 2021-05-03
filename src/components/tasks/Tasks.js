@@ -12,7 +12,7 @@ const Tasks = ({ task: { tasks, loading }, getTasks }) => {
         // eslint-disable-next-line
     }, [])
 
-    if(loading || tasks === null) {
+    if(tasks === null) {
         return <Preloader />
     }
 

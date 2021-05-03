@@ -1,26 +1,32 @@
 import React from 'react'
 import PropTypes from 'prop-types'
-import Moment from 'react-moment'
 import { connect } from 'react-redux'
 import { setCurrent } from '../../actions/taskActions'
-import M from 'materialize-css/dist/js/materialize.min.js'
 
 const TaskItem = ({ task, setCurrent }) => {
-    const onGrade = () => {
-        M.toast({ html: 'Task is clicked' })
-        }
+
     
     return (
-        <li className="collection-item">
-            <div>
-            <a href="#edit-task-modal" className={`modal-trigger ${task.isCreator ? 'red-text' : 'blue-text'}`} onClick={() => setCurrent(task)}>{task.title}</a>
-            <br />
-            <span className="grey-text">
-                    <span className="black-text">Description: {task.description}</span> 
-            </span>
-                <a href="#!" onClick={onGrade} className="secondary-content">
-                    <i className="material-icons grey-text">grade</i>
-                </a>
+        <li className="collection-item ">
+            <div className="row ">
+              <div className="col s13 m12 ">
+                <div className="card blue-grey darken-1 ">
+                  <div className="card-content white-text ">
+                    <span className="card-title ">{task.title}</span>
+                    <p>Description: {task.description === '' ? 'No description' : task.description}</p>
+                    <p>Creator: {task.isCreator}</p>
+                    <p>Status: {task.status === '' || task.status === ' '? 'No status' : task.status}</p>
+                    <p>Assignee: {task.assignee === '' || task.status === ' ' ? 'No assignee': task.assignee}</p>
+                  </div>
+                  <div className="card-action">
+                    <div className="fixed-action-btn-right" id="add-project">
+                      <a href="#edit-task-modal" className="btn-floating btn-large indigo darken-3 darken-1 modal-trigger" onClick={() => setCurrent(task)}> 
+                          <i className="large material-icons">system_update</i>
+                      </a>  
+                    </div>
+                  </div>
+                </div>
+              </div>
             </div>
         </li>
     )

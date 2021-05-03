@@ -8,6 +8,7 @@ const UserListModal = ({getUsers, user: {users, loading}}) => {
 
     useEffect(() => {
         getUsers();
+        // eslint-disable-next-line
     }, [])
 
     return (

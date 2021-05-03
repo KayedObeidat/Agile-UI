@@ -3,13 +3,12 @@ import M from 'materialize-css/dist/js/materialize.min.js'
 import { connect } from 'react-redux'
 import PropTypes from 'prop-types'
 import { updateTask } from '../../actions/taskActions'
-import UserSelectOptions from '../users/UserSelectOptions'
 
 const EditTaskModal = ({ current, updateTask }) => {
     const [title, setTitle] = useState('');
     const [description, setDescription] = useState('');
     const [status, setStatus] = useState('');
-    const [isCreator, setIsCreator] = useState(false);
+    const [isCreator, setIsCreator] = useState('');
     const [assignee, setAssignee] = useState('');
 
     useEffect(() => {
@@ -23,26 +22,25 @@ const EditTaskModal = ({ current, updateTask }) => {
     }, [current])
 
     const onSubmit = () => {
-        if(title === '' || description === '' || status === '' || isCreator === '') {
+        if(title === '' || description === '' || status === '' ) {
             M.toast({ html: 'Please check all fields' })
         } else {
             const upTask = {
-                id: current.id,
+                _id: current._id,
                 title,
                 description,
                 status,
                 isCreator,
-                assignee,
-                date: new Date()
+                assignee
             }
             
             updateTask(upTask);
-            M.toast({ html: `Task has been updated successfully}` })
+            M.toast({ html: `${title} has been updated successfully!` })
 
             setTitle('');
             setDescription('');
             setStatus('');
-            setIsCreator(false);
+            setIsCreator('');
             setAssignee('');
         }
 
@@ -50,7 +48,7 @@ const EditTaskModal = ({ current, updateTask }) => {
      
         return <div id='edit-task-modal' className="modal" style={modalStyle}>
         <div className="modal-content">
-            <h4>Enter System Task</h4>
+            <h4>Edit System Task</h4>
 
             <div className="row">
                 <div className="input-field">
@@ -79,27 +77,27 @@ const EditTaskModal = ({ current, updateTask }) => {
                         Task Status
                     </label>
                 </div>
-            </div>  
-    
-            <div className="row">
-    
-                <div className="input-field">
-                <label>
-                        <input type="checkbox" className="filled-in" checked={isCreator} value={isCreator} onChange={e => setIsCreator(!isCreator)} />
-                        Creator
+            </div> 
+
+                    <div className="row">
+
+            <div className="input-field">  
+                <input type="text" name='isCreator' value={isCreator} onChange={e => setIsCreator(e.target.value)} />
+                    <label htmlFor="isCreator" className="active">
+                        Task Creator
                     </label>
-                </div>
-            </div>  
-    
-            <div className="row">
-    
-                <div className="input-field">
-                    <input type="text" name='assignee' value={assignee} onChange={e => setAssignee(e.target.value)} />
-                    <label htmlFor="assignee" className="active">
-                        Task Assignee
-                    </label>
-                </div>
-            </div>  
+            </div>
+        </div>  
+
+        <div className="row">
+
+            <div className="input-field">
+                <input type="text" name='assignee' value={assignee} onChange={e => setAssignee(e.target.value)} />
+                <label htmlFor="assignee" className="active">
+                    Task Assignee
+                </label>
+            </div>
+        </div>  
     
         </div>
         <div className="modal-footer">

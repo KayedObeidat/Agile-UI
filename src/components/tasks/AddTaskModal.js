@@ -8,11 +8,11 @@ const AddTaskModal = ({ addTask }) => {
     const [title, setTitle] = useState('');
     const [description, setDescription] = useState('');
     const [status, setStatus] = useState('');
-    const [isCreator, setIsCreator] = useState(false);
+    const [isCreator, setIsCreator] = useState('');
     const [assignee, setAssignee] = useState('');
 
     const onSubmit = () => {
-        if(title === '' || description === '' || status === '') {
+        if(title === '' || description === '' || status === '' || isCreator === '') {
             M.toast({html: 'Please check all your fields'})
         }
         else {
@@ -22,7 +22,6 @@ const AddTaskModal = ({ addTask }) => {
                 status,
                 isCreator,
                 assignee,
-                date: new Date()
             }
 
             addTask(newTask)
@@ -32,7 +31,7 @@ const AddTaskModal = ({ addTask }) => {
             setTitle('');
             setDescription('');
             setStatus('');
-            setIsCreator(false);
+            setIsCreator('');
             setAssignee('');
         }
     }
@@ -73,12 +72,10 @@ const AddTaskModal = ({ addTask }) => {
         <div className="row">
 
             <div className="input-field">  
-                <p>              
-                    <label>
-                        <input type="checkbox" checked={isCreator} value={isCreator} onChange={e => setIsCreator(!isCreator)} />
-                        <span>Creator</span>
+                <input type="text" name='isCreator' value={isCreator} onChange={e => setIsCreator(e.target.value)} />
+                    <label htmlFor="isCreator" className="active">
+                        Task Creator
                     </label>
-                </p>
             </div>
         </div>  
 

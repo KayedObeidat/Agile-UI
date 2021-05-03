@@ -5,6 +5,7 @@ import { getUsers } from '../../actions/userActions'
 const UserSelectOptions = ({getUsers, user: {users, loading}}) => {
     useEffect(() => {
         getUsers();
+        // eslint-disable-next-line
     }, [])
 
     return (

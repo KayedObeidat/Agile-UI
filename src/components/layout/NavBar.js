@@ -1,17 +1,27 @@
-import React, {useRef} from 'react'
-import PropTypes from 'prop-types'
+import React from 'react'
 
 const NavBar = () => {
     return (
         <nav>
-        <div className="nav-wrapper">
-          <a href="#!" className="brand-logo"><i className="material-icons">bookmark</i>Agile Ticketing System</a>
+        <div className="nav-wrapper blue-grey darken-1">
+          <a href="#!" className="brand-logo center"><i className="material-icons">bookmark</i>Agile Ticketing System</a>
           <ul className="right hide-on-med-and-down">
-            <li><a href="sass.html"><i className="material-icons">search</i></a></li>
-            <li><a href="badges.html"><i className="material-icons">view_module</i></a></li>
-            <li><a href="collapsible.html"><i className="material-icons">refresh</i></a></li>
-            <li><a href="mobile.html"><i className="material-icons">more_vert</i></a></li>
-          </ul>
+          <li>
+          <div className="fixed-action-btn-left" id="add-project">
+            <a href="#add-project-modal" className="btn-floating btn-large indigo darken-3 darken-1 modal-trigger"> 
+                <i className="large material-icons">add_circle_outline</i>
+            </a>  
+          </div>   
+          </li>  
+
+           <li>
+          <div className="fixed-action-btn-left" id="add-project">
+            <a href="#project-list-modal" className="btn-floating btn-large indigo darken-3 darken-1 modal-trigger"> 
+                <i className="large material-icons">line_weight</i>
+            </a>  
+          </div>   
+          </li>        
+        </ul>
         </div>
       </nav>
     )

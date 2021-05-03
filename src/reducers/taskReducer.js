@@ -2,29 +2,29 @@ import { ADD_TASK, GET_TASKS, UPDATE_TASK, TASKS_ERROR, SEARCH_TASKS, SET_LOADIN
 
 const initialState = {
     tasks: null,
-    error: null,
     loading: false,
-    current: null
+    current: null,
+    error: null
 }
 
 export default (state = initialState, action) => {
-    switch(action.payload) {
+    switch(action.type) {
         case ADD_TASK:
-            return {
-                ...state,
-                tasks: action.payload,
-                loading: false
-            }
-        case GET_TASKS:
             return {
                 ...state,
                 tasks: [...state.tasks, action.payload],
                 loading: false
             }
+        case GET_TASKS:
+            return {
+                ...state,
+                tasks: action.payload,
+                loading: false
+            }
         case UPDATE_TASK:
             return {
                 ...state,
-                task: state.tasks.map(task => task.id === action.payload ? action.payload : task )
+                task: state.tasks.map(task => task._id === action.payload._id ? action.payload : task )
             }
         case SEARCH_TASKS:
             return {
@@ -50,7 +50,7 @@ export default (state = initialState, action) => {
             console.error(action.payload);
             return {
                 ...state,
-                error: action.payload
+                error: action.payload,
             }
         default:
             return state;

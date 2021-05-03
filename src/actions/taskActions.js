@@ -1,4 +1,5 @@
 import { GET_TASKS, ADD_TASK, UPDATE_TASK, TASKS_ERROR, SET_LOADING, SET_CURRENT, CLEAR_CURRENT, SEARCH_TASKS } from './Types';
+import axios from 'axios'
 
 //Get tasks from the server
 export const getTasks = () => async dispatch => {
@@ -10,7 +11,7 @@ export const getTasks = () => async dispatch => {
 
         dispatch({
             type: GET_TASKS,
-            payload: res.data
+            payload: data
         })
 
     } catch (err) {
@@ -52,13 +53,21 @@ export const updateTask = (task) => async dispatch => {
     try {
         setLoading();
 
-        const res = await fetch(`http://localhost:3001/tasks/${task.id}`, {
-            method: 'PUT',
+        const res = await fetch(`http://localhost:3001/tasks/update/${task._id}`, {
+            method: 'PATCH',
             body: JSON.stringify(task),
             headers: {
                 'Content-Type': 'application/json'
             }
         });
+
+        // const res = await axios.patch(`http://localhost:3001/tasks/update/${this.state.id}`, {
+        //     title: task.title,
+        //     description: task.description,
+        //     status: task.status,
+        //     isCreator: task.isCreator,
+        //     assignee: task.assignee
+        // })
 
         const data = await res.json();
 
