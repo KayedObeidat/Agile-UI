@@ -53,9 +53,14 @@ export const updateTask = (task) => async dispatch => {
     try {
         setLoading();
 
-        const res = await fetch(`http://localhost:3001/tasks/update/${task._id}`, {
+        const {
+            id,
+            ...rest
+        } = task;
+
+        const res = await fetch(`http://localhost:3001/tasks/update/${task.id}`, {
             method: 'PATCH',
-            body: JSON.stringify(task),
+            body: JSON.stringify(rest),
             headers: {
                 'Content-Type': 'application/json'
             }

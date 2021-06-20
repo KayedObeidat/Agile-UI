@@ -17,7 +17,7 @@ const UserListModal = ({getUsers, user: {users, loading}}) => {
                 <h4>Users List</h4>
                 <ul className="collection">
                     {!loading && users !== null && users.map(user => (
-                        <UserItem user={user} key={user._id} />
+                        <UserItem user={user} key={user.id} />
                     ))}
                 </ul>
             </div>

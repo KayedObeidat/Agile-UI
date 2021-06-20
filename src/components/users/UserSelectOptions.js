@@ -9,7 +9,7 @@ const UserSelectOptions = ({getUsers, user: {users, loading}}) => {
     }, [])
 
     return (
-        !loading && users !== null && users.map(user => <option key={user._id} value={`${user.name}`}>
+        !loading && users !== null && users.map(user => <option key={user.id} value={`${user.name}`}>
             {user.name}
         </option>)
     )

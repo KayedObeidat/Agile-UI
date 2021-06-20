@@ -2,29 +2,65 @@ import React from 'react'
 import PropTypes from 'prop-types'
 import { connect } from 'react-redux'
 import { setCurrent } from '../../actions/taskActions'
+import ListGroup from 'react-bootstrap/ListGroup'
+
 
 const TaskItem = ({ task, setCurrent }) => {
-
+//   <div className="fixed-action-btn-right" style={{ position: "relative", bottom: "85px", left: "400px" }} id="show-tasks">
+//   <a href="#show-task-content" className="btn-floating btn-large darken-4 modal-trigger" onClick={() => setCurrent(task)}> 
+//       <i className="large material-icons" style={{ backgroundColor: '#006064' }}>attachment</i>
+//   </a>  
+// </div>
     
     return (
-        <li className="collection-item ">
-            <div className="row ">
-              <div className="col s13 m12 ">
-                <div className="card blue-grey darken-1 ">
-                  <div className="card-content white-text ">
-                    <span className="card-title ">{task.title}</span>
-                    <p>Description: {task.description === '' ? 'No description' : task.description}</p>
-                    <p>Creator: {task.isCreator}</p>
-                    <p>Status: {task.status === '' || task.status === ' '? 'No status' : task.status}</p>
-                    <p>Assignee: {task.assignee === '' || task.status === ' ' ? 'No assignee': task.assignee}</p>
-                  </div>
-                  <div className="card-action">
-                    <div className="fixed-action-btn-right" id="add-project">
-                      <a href="#edit-task-modal" className="btn-floating btn-large indigo darken-3 darken-1 modal-trigger" onClick={() => setCurrent(task)}> 
-                          <i className="large material-icons">system_update</i>
+        <li className="collection-item lighten-5" style={{ backgroundColor: "#006064 " }}>
+            <div className="row" style={{ position: "relative", display: "inline-block" }}>
+              <div className="col s13 m6">
+                <div className="card blue-grey darken-1 " style={{ width: "300px" }}>
+                  <div className="card-content white-text accent-2" style={{ backgroundColor: "#051a26", width: "300px" }}>
+                    <a href="#show-task-content" className=" modal-trigger" style={{fontWeight: "bold", color: "white", fontSize: "20px" }} onClick={() => setCurrent(task)}> {task.title}</a>
+                    <p style={{fontWeight: 'bold', color: 'white'}}>Status: {task.status === '' || task.status === ' '? 'No status' : task.status}</p>
+                    <div className="fixed-action-btn-left" id="add-project" style={{ position: "relative", right: "-210px", top: "-50px"}}>
+                      <a href="#edit-task-modal" className="btn-floating btn-large darken-4 modal-trigger" onClick={() => setCurrent(task)}> 
+                          <i className="large material-icons" style={{ backgroundColor: '#006064' }}>border_color</i>
                       </a>  
                     </div>
                   </div>
+              
+                </div>
+              </div>
+            </div>
+
+            <div className="row" style={{ position: "relative", display: "inline-block" }}>
+              <div className="col s13 m6">
+                <div className="card blue-grey darken-1 " style={{ width: "300px" }}>
+                  <div className="card-content white-text accent-2" style={{ backgroundColor: "#051a26", width: "300px" }}>
+                    <a href="#show-task-content" className=" modal-trigger" style={{fontWeight: "bold", color: "white", fontSize: "20px" }} onClick={() => setCurrent(task)}> {task.title}</a>
+                    <p style={{fontWeight: 'bold', color: 'white'}}>Status: {task.status === '' || task.status === ' '? 'No status' : task.status}</p>
+                    <div className="fixed-action-btn-left" id="add-project" style={{ position: "relative", right: "-210px", top: "-50px"}}>
+                      <a href="#edit-task-modal" className="btn-floating btn-large darken-4 modal-trigger" onClick={() => setCurrent(task)}> 
+                          <i className="large material-icons" style={{ backgroundColor: '#006064' }}>border_color</i>
+                      </a>  
+                    </div>
+                  </div>
+              
+                </div>
+              </div>
+            </div>
+
+            <div className="row" style={{ position: "relative", display: "inline-block" }}>
+              <div className="col s13 m6">
+                <div className="card blue-grey darken-1 " style={{ width: "300px" }}>
+                  <div className="card-content white-text accent-2" style={{ backgroundColor: "#051a26", width: "300px" }}>
+                    <a href="#show-task-content" className=" modal-trigger" style={{fontWeight: "bold", color: "white", fontSize: "20px" }} onClick={() => setCurrent(task)}> {task.title}</a>
+                    <p style={{fontWeight: 'bold', color: 'white'}}>Status: {task.status === '' || task.status === ' '? 'No status' : task.status}</p>
+                    <div className="fixed-action-btn-left" id="add-project" style={{ position: "relative", right: "-210px", top: "-50px"}}>
+                      <a href="#edit-task-modal" className="btn-floating btn-large darken-4 modal-trigger" onClick={() => setCurrent(task)}> 
+                          <i className="large material-icons" style={{ backgroundColor: '#006064' }}>border_color</i>
+                      </a>  
+                    </div>
+                  </div>
+              
                 </div>
               </div>
             </div>

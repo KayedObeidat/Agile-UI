@@ -4,7 +4,7 @@ import { connect } from 'react-redux'
 import PropTypes from 'prop-types'
 import { updateTask } from '../../actions/taskActions'
 
-const EditTaskModal = ({ current, updateTask }) => {
+const ShowTaskContent = ({ current }) => {
     const [title, setTitle] = useState('');
     const [description, setDescription] = useState('');
     const [status, setStatus] = useState('');
@@ -21,33 +21,14 @@ const EditTaskModal = ({ current, updateTask }) => {
         }
     }, [current])
 
-    const onSubmit = () => {
-        if(title === '' || description === '' || status === '' ) {
-            M.toast({ html: 'Please check all fields' })
-        } else {
-            const upTask = {
-                id: current.id,
-                title,
-                description,
-                status,
-                isCreator,
-                assignee
-            }
-            
-            updateTask(upTask);
-            M.toast({ html: `${title} has been updated successfully!` })
-
-        }
-
-    }
      
-        return <div id='edit-task-modal' className="modal" style={modalStyle}>
+        return <div id='show-task-content' className="modal" style={modalStyle}>
         <div className="modal-content">
-            <h4>Edit System Task</h4>
-
+            <h4>{title} Content</h4>
+    <br />
             <div className="row">
                 <div className="input-field">
-                    <input type="text" name='title' value={title} onChange={e => setTitle(e.target.value)} placeholder="" />
+                    <input type="text" name='title' value={title} onChange={e => setTitle(e.target.value)} placeholder="" disabled />
                     <label htmlFor="title" className="active">
                         Task Title
                     </label>
@@ -57,7 +38,7 @@ const EditTaskModal = ({ current, updateTask }) => {
             <div className="row">
     
                 <div className="input-field">
-                    <input type="text" name='description' value={description} onChange={e => setDescription(e.target.value)} placeholder="" />
+                    <input type="text" name='description' value={description} onChange={e => setDescription(e.target.value)} placeholder="" disabled />
                     <label htmlFor="description" className="active">
                         Task Description
                     </label>
@@ -67,7 +48,7 @@ const EditTaskModal = ({ current, updateTask }) => {
             <div className="row">
     
                 <div className="input-field">
-                    <input type="text" name='status' value={status} onChange={e => setStatus(e.target.value)} placeholder="" />
+                    <input type="text" name='status' value={status} onChange={e => setStatus(e.target.value)} placeholder="" disabled />
                     <label htmlFor="status" className="active">
                         Task Status
                     </label>
@@ -77,7 +58,7 @@ const EditTaskModal = ({ current, updateTask }) => {
                     <div className="row">
 
             <div className="input-field">  
-                <input type="text" name='isCreator' value={isCreator} onChange={e => setIsCreator(e.target.value)} placeholder="" />
+                <input type="text" name='isCreator' value={isCreator} onChange={e => setIsCreator(e.target.value)} placeholder="" disabled />
                     <label htmlFor="isCreator" className="active">
                         Task Creator
                     </label>
@@ -87,7 +68,7 @@ const EditTaskModal = ({ current, updateTask }) => {
         <div className="row">
 
             <div className="input-field">
-                <input type="text" name='assignee' value={assignee} onChange={e => setAssignee(e.target.value)} placeholder="" />
+                <input type="text" name='assignee' value={assignee} onChange={e => setAssignee(e.target.value)} placeholder="" disabled />
                 <label htmlFor="assignee" className="active">
                     Task Assignee
                 </label>
@@ -95,9 +76,7 @@ const EditTaskModal = ({ current, updateTask }) => {
         </div>  
     
         </div>
-        <div className="modal-footer">
-            <a href="#!" onClick={onSubmit} className="modal-close waves-effect blue waves-light btn">Enter</a>
-        </div>
+
     </div>
 }
 
@@ -106,13 +85,12 @@ const modalStyle = {
     height: '75%'
 }
 
-EditTaskModal.propTypes = {
+ShowTaskContent.propTypes = {
     current: PropTypes.object,
-    updateTask: PropTypes.func.isRequired,
 }
 
 const mapStateToProps = state => ({
     current: state.task.current
 })
 
-export default connect(mapStateToProps, { updateTask })(EditTaskModal);
+export default connect(mapStateToProps)(ShowTaskContent);

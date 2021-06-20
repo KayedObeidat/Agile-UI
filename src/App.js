@@ -15,7 +15,9 @@ import store from './store'
 import AddProjectButton from './components/layout/AddProjectButton'
 import UserSelectOptions from './components/users/UserSelectOptions';
 import ProjectListModal from './components/projects/ProjectListModal'
+import ShowTaskContent from './components/tasks/ShowTaskContent'
 const App = () => {
+
   useEffect(() => {
     M.AutoInit();
   })
@@ -27,16 +29,18 @@ const App = () => {
       <div className="container">
         <AddBtn />
         <AddTaskModal />
+        <EditTaskModal />
         <AddProjectModal />
         <ProjectListModal />
-        <EditTaskModal />
         <AddUserModal />
         <UserListModal />
+        <ShowTaskContent />
         <Tasks />
       </div>
     </Fragment>
     </Provider>
   );
+  
 }
 
 export default App;

@@ -17,7 +17,7 @@ const ProjectListModal = ({getProjects, project: {projects, loading}}) => {
                 <h4>Projects List</h4>
                 <ul className="collection">
                     {!loading && projects !== null && projects.map(project => (
-                        <ProjectItem project={project} key={project._id} />
+                        <ProjectItem project={project} key={project.id} />
                     ))}
                 </ul>
             </div>
