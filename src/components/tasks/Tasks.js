@@ -21,7 +21,7 @@ const Tasks = ({ task: { tasks, loading }, getTasks }) => {
              <li className="collection-header lighten-4" style={{ backgroundColor: "#051a26" }}>
                  <h3 className="center" style={{color: 'white '}}>System Tasks</h3>
              </li>
-             {!loading && tasks.length === 0 ? (<p className="center">No tasks to show...</p>) : (tasks.map(task => <TaskItem task={task} key={task.id} />  ))}
+             {!loading && tasks.length === 0 ? (<p className="center">No tasks to show...</p>) : (tasks.map(task => <TaskItem task={task} key={task.id} style={{ display: "flex"}} />  ))}
 
 
         </ul>

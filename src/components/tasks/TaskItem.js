@@ -3,56 +3,20 @@ import PropTypes from 'prop-types'
 import { connect } from 'react-redux'
 import { setCurrent } from '../../actions/taskActions'
 import ListGroup from 'react-bootstrap/ListGroup'
+import { Fragment } from 'react'
 
 
 const TaskItem = ({ task, setCurrent }) => {
-//   <div className="fixed-action-btn-right" style={{ position: "relative", bottom: "85px", left: "400px" }} id="show-tasks">
-//   <a href="#show-task-content" className="btn-floating btn-large darken-4 modal-trigger" onClick={() => setCurrent(task)}> 
-//       <i className="large material-icons" style={{ backgroundColor: '#006064' }}>attachment</i>
-//   </a>  
-// </div>
-    
+   
     return (
-        <li className="collection-item lighten-5" style={{ backgroundColor: "#006064 " }}>
-            <div className="row" style={{ position: "relative", display: "inline-block" }}>
-              <div className="col s13 m6">
-                <div className="card blue-grey darken-1 " style={{ width: "300px" }}>
-                  <div className="card-content white-text accent-2" style={{ backgroundColor: "#051a26", width: "300px" }}>
-                    <a href="#show-task-content" className=" modal-trigger" style={{fontWeight: "bold", color: "white", fontSize: "20px" }} onClick={() => setCurrent(task)}> {task.title}</a>
-                    <p style={{fontWeight: 'bold', color: 'white'}}>Status: {task.status === '' || task.status === ' '? 'No status' : task.status}</p>
-                    <div className="fixed-action-btn-left" id="add-project" style={{ position: "relative", right: "-210px", top: "-50px"}}>
-                      <a href="#edit-task-modal" className="btn-floating btn-large darken-4 modal-trigger" onClick={() => setCurrent(task)}> 
-                          <i className="large material-icons" style={{ backgroundColor: '#006064' }}>border_color</i>
-                      </a>  
-                    </div>
-                  </div>
-              
-                </div>
-              </div>
-            </div>
 
-            <div className="row" style={{ position: "relative", display: "inline-block" }}>
-              <div className="col s13 m6">
-                <div className="card blue-grey darken-1 " style={{ width: "300px" }}>
-                  <div className="card-content white-text accent-2" style={{ backgroundColor: "#051a26", width: "300px" }}>
-                    <a href="#show-task-content" className=" modal-trigger" style={{fontWeight: "bold", color: "white", fontSize: "20px" }} onClick={() => setCurrent(task)}> {task.title}</a>
-                    <p style={{fontWeight: 'bold', color: 'white'}}>Status: {task.status === '' || task.status === ' '? 'No status' : task.status}</p>
-                    <div className="fixed-action-btn-left" id="add-project" style={{ position: "relative", right: "-210px", top: "-50px"}}>
-                      <a href="#edit-task-modal" className="btn-floating btn-large darken-4 modal-trigger" onClick={() => setCurrent(task)}> 
-                          <i className="large material-icons" style={{ backgroundColor: '#006064' }}>border_color</i>
-                      </a>  
-                    </div>
-                  </div>
-              
-                </div>
-              </div>
-            </div>
 
-            <div className="row" style={{ position: "relative", display: "inline-block" }}>
-              <div className="col s13 m6">
-                <div className="card blue-grey darken-1 " style={{ width: "300px" }}>
+        <li className="collection-item lighten-5" style={{ backgroundColor: "#006064 " }} >
+            <div className="row" style={{ position: "relative", display: "flex" }}>
+              <div className="col s13 m6" style={{display:"flex", flexWrap:"wrap;"}}>
+                <div className="card blue-grey darken-1 " style={{ width: "300px", display: "flex" }}>
                   <div className="card-content white-text accent-2" style={{ backgroundColor: "#051a26", width: "300px" }}>
-                    <a href="#show-task-content" className=" modal-trigger" style={{fontWeight: "bold", color: "white", fontSize: "20px" }} onClick={() => setCurrent(task)}> {task.title}</a>
+                    <a href="#show-task-content" className=" modal-trigger" style={{fontWeight: "bold", color: "white", fontSize: "20px" }} onClick={() => setCurrent(task)}> {task.title} </a>
                     <p style={{fontWeight: 'bold', color: 'white'}}>Status: {task.status === '' || task.status === ' '? 'No status' : task.status}</p>
                     <div className="fixed-action-btn-left" id="add-project" style={{ position: "relative", right: "-210px", top: "-50px"}}>
                       <a href="#edit-task-modal" className="btn-floating btn-large darken-4 modal-trigger" onClick={() => setCurrent(task)}> 
@@ -65,6 +29,9 @@ const TaskItem = ({ task, setCurrent }) => {
               </div>
             </div>
         </li>
+        
+
+        
     )
 }
 
